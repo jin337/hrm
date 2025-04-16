@@ -34,32 +34,7 @@ export default defineConfig({
         './org': './src/pages/org.jsx',
         './member': './src/pages/member.jsx',
       },
-      shared: {
-        react: {
-          singleton: true,
-          requiredVersion: '^18.3.1',
-        },
-        'react-dom': {
-          singleton: true,
-          requiredVersion: '^18.3.1',
-        },
-        'react-router': {
-          singleton: true,
-          requiredVersion: '^7.4.1',
-        },
-        'react-redux': {
-          singleton: true,
-          requiredVersion: '^9.2.0',
-        },
-        '@reduxjs/toolkit': {
-          singleton: true,
-          requiredVersion: '^2.6.1',
-        },
-        axios: {
-          singleton: true,
-          requiredVersion: '^1.8.4',
-        },
-      },
+      shared: ['react', 'react-dom', 'react-router', 'react-redux', '@reduxjs/toolkit', 'axios'],
     }),
   ],
   build: {
@@ -67,16 +42,5 @@ export default defineConfig({
     target: 'esnext',
     minify: false,
     cssCodeSplit: false,
-    rollupOptions: {
-      output: {
-        entryFileNames: 'assets/js/[name]-[hash].js',
-        chunkFileNames: 'assets/js/chunks/[name]-[hash].js',
-        assetFileNames: 'assets/[ext]/[name]-[hash].[ext]',
-        manualChunks: {
-          'chunk-vendor': ['react', 'react-dom', 'react-router', 'react-redux', '@reduxjs/toolkit', 'axios'],
-          'chunk-other': ['@arco-design/web-react'],
-        },
-      },
-    },
   },
 })
